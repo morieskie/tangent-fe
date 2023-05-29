@@ -1,5 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SlotDirective } from 'src/app/shared/directives/slot.directive';
 import { EmployeeModel } from 'src/app/shared/models/employee.model';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 
@@ -9,6 +10,9 @@ import { EmployeeService } from 'src/app/shared/services/employee.service';
   styleUrls: ['./employee.component.scss'],
 })
 export class EmployeeComponent implements OnInit, OnChanges {
+
+  @ViewChild(SlotDirective, {static: true}) appSlot!: SlotDirective
+  
   items: EmployeeModel[] = [];
   total = '0';
   query: string | null = '';
