@@ -232,15 +232,16 @@
     </div>
 
     <div class="col-12">
-        <app-skill *ngFor="let skill of skills" [skill]="skill"></app-skill>
-        <app-skill [skill]="skillModel"></app-skill>
+        <app-skill *ngFor="let skill of skills; let i = index" [skill]="skill" (removed)="onRemoved(i)"></app-skill>
+        <button class="btn btn-secondary" (click)="onAddSkill()"> + Add New Skill</button>
     </div>
 
     <div class="col-12 text-end">
       <button
         class="btn text-white text-center align-middle border-0 rounded-pill"
         style="background-color: #71319e"
-        disabled=""
+        [disabled]="employeeForm.form.invalid"
+        (click)="onSubmit()"
       >
         <div class="row">
           <div class="col-2 p-2">
