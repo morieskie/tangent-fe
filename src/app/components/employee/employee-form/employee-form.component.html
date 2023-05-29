@@ -231,6 +231,11 @@
         Skills
     </div>
 
+    <div class="col-12">
+        <app-skill *ngFor="let skill of skills" [skill]="skill"></app-skill>
+        <app-skill [skill]="skillModel"></app-skill>
+    </div>
+
     <div class="col-12 text-end">
       <button
         class="btn text-white text-center align-middle border-0 rounded-pill"

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { EmployeeModel } from 'src/app/shared/models/employee.model';
+import {Component} from '@angular/core'
+import {EmployeeModel} from 'src/app/shared/models/employee.model'
+import {SkillModel} from 'src/app/shared/models/skill.model'
 
 @Component({
   selector: 'app-employee-form',
@@ -7,9 +8,12 @@ import { EmployeeModel } from 'src/app/shared/models/employee.model';
   styleUrls: ['./employee-form.component.scss'],
 })
 export class EmployeeFormComponent {
-  formModel: EmployeeModel = new EmployeeModel('', '', '', '', '', '', '', '');
+  formModel: EmployeeModel = new EmployeeModel('', '', '', '', '', '', '', '')
 
-  onSubmit(){
+  skills: SkillModel[] = []
+  skillModel = new SkillModel('');
+
+  onSubmit() {
     console.log(this.formModel)
   }
 }
