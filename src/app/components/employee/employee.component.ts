@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SlotDirective } from 'src/app/shared/directives/slot.directive';
 import { EmployeeModel } from 'src/app/shared/models/employee.model';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 @Component({
   selector: 'app-employee',
@@ -20,7 +22,8 @@ export class EmployeeComponent implements OnInit, OnChanges {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private service: EmployeeService
+    private service: EmployeeService,
+    private modalService: ModalService,
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +56,16 @@ export class EmployeeComponent implements OnInit, OnChanges {
   };
 
   onAdd() {
-    alert("Adding")
+    this.appSlot.viewContainerRef.clear();
+    
+      const component = this.appSlot.viewContainerRef.createComponent<any>(EmployeeFormComponent)
+      component.instance.display = 'block';
+      this.modalService.activate()
+      this.modalService.observe().subscribe((res) => {
+        if (!res) {
+          component.destroy()
+          this.appSlot.viewContainerRef.clear();
+        }
+      })
   }
 }

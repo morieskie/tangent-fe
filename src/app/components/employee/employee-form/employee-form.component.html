@@ -1,0 +1,254 @@
+<app-modal>
+  <span title>Edit Employee</span>
+  <form class="row g-3 needs-validation" #employeeForm="ngForm">
+    <div class="col-12 section-title">
+        Basic Info
+    </div>
+
+    <div class="col-md-6">
+      <div
+        class="form-group"
+        [class.has-success]="
+          firstName.valid && (firstName.dirty || firstName.touched)
+        "
+        [class.has-danger]="
+          firstName.invalid && (firstName.dirty || firstName.touched)
+        "
+      >
+        <label for="first_name" class="form-label">First name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="first_name"
+          [(ngModel)]="formModel.first_name"
+          name="first_name"
+          #firstName="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            firstName.invalid && (firstName.dirty || firstName.touched)
+              ? 'block'
+              : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div
+        class="form-group"
+        [class.has-success]="
+          lastName.valid && (lastName.dirty || lastName.touched)
+        "
+        [class.has-danger]="
+          lastName.invalid && (lastName.dirty || lastName.touched)
+        "
+      >
+        <label for="last_name" class="form-label">Last name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="last_name"
+          [(ngModel)]="formModel.last_name"
+          name="last_name"
+          #lastName="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            lastName.invalid && (lastName.dirty || lastName.touched)
+              ? 'block'
+              : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div
+        class="form-group"
+        [class.has-success]="
+          contactNumber.valid && (contactNumber.dirty || contactNumber.touched)
+        "
+        [class.has-danger]="
+          contactNumber.invalid &&
+          (contactNumber.dirty || contactNumber.touched)
+        "
+      >
+        <label for="contact_number" class="form-label">Contact number</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="contact_number"
+          placeholder="+27 72 234 4566"
+          [(ngModel)]="formModel.contact_number"
+          name="contact_number"
+          #contactNumber="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            contactNumber.invalid &&
+            (contactNumber.dirty || contactNumber.touched)
+              ? 'block'
+              : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-12 section-title">
+        Address Info
+    </div>
+    <div class="col-12">
+      <div
+        class="form-group"
+        [class.has-success]="street.valid && (street.dirty || street.touched)"
+        [class.has-danger]="street.invalid && (street.dirty || street.touched)"
+      >
+        <label for="street" class="form-label">Street Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="street"
+          placeholder="Apartment, studio, or floor"
+          [(ngModel)]="formModel.street"
+          name="street"
+          #street="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            street.invalid && (street.dirty || street.touched)
+              ? 'block'
+              : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="form-group"
+        [class.has-success]="city.valid && (city.dirty || city.touched)"
+        [class.has-danger]="city.invalid && (city.dirty || city.touched)"
+      >
+        <label for="city" class="form-label">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          [(ngModel)]="formModel.city"
+          name="city"
+          #city="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            city.invalid && (city.dirty || city.touched) ? 'block' : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="form-group"
+        [class.has-success]="
+          postalCode.valid && (postalCode.dirty || postalCode.touched)
+        "
+        [class.has-danger]="
+          postalCode.invalid && (postalCode.dirty || postalCode.touched)
+        "
+      >
+        <label for="postal_code" class="form-label">Post Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="postal_code"
+          [(ngModel)]="formModel.postal_code"
+          name="postal_code"
+          #postalCode="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            postalCode.invalid && (postalCode.dirty || postalCode.touched)
+              ? 'block'
+              : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="form-group"
+        [class.has-success]="
+          country.valid && (country.dirty || country.touched)
+        "
+        [class.has-danger]="
+          country.invalid && (country.dirty || country.touched)
+        "
+      >
+        <label for="country" class="form-label">Country</label>
+        <input
+          type="text"
+          class="form-control"
+          id="country"
+          [(ngModel)]="formModel.country"
+          name="coutry"
+          #country="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            country.invalid && (country.dirty || country.touched)
+              ? 'block'
+              : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 section-title">
+        Skills
+    </div>
+
+    <div class="col-12 text-end">
+      <button
+        class="btn text-white text-center align-middle border-0 rounded-pill"
+        style="background-color: #71319e"
+        disabled=""
+      >
+        <div class="row">
+          <div class="col-2 p-2">
+            <span class="add-icn"> + </span>
+          </div>
+          <div class="col">
+            <span class="align-top"
+              >Save changes to <br />
+              Employee</span
+            >
+          </div>
+        </div>
+      </button>
+    </div>
+  </form>
+</app-modal>

@@ -1,4 +1,6 @@
+
 <div class="container text-center">
+
     <div class="row mt-5 mb-5 text-white">
         <div class="col-3 align-self-center">
             <h2 class="mb-0 pb-0">Employees</h2>
@@ -10,8 +12,11 @@
         </div>
         <div class="col-auto mt-3">Filter by</div>
         <div class="col mt-2">
-            <button class="btn text-white rounded-pill" (click)="onAdd()">
-                + New Employee
+            <button class="btn text-white ps-2 pe-2 rounded-pill" (click)="onAdd()">
+            <div class="row">
+                <div class="col-2"><span class="add-icn"> + </span></div>
+                <div class="col">New Employee</div>
+            </div>
             </button>
         </div>
     </div>
@@ -31,5 +36,7 @@
     <div *ngIf="items.length === 0">
         <img src="assets/images/icon.jpg" />
     </div>
+
   </div>
+
   <ng-container appSlot></ng-container>
