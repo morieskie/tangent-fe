@@ -1,0 +1,37 @@
+.container {
+    width: 800px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+  }
+
+  button.btn {
+    background-color: #71319e
+  }
+
+
+.bg-purple {
+    background-color: #71319e;
+    border-color: #71319e;
+    color: #ffffff;
+}
+
+.list-item {
+    background-color: #767070;
+    margin-bottom: 2.5em;
+    border-radius: 10px !important;
+    // .col {
+    //     flex: 0 0 10%;
+    // }
+    .item-count  {
+        color: #71319e;
+        border: solid 1px #71319e;
+        border-radius: 100px !important;
+        width: 25px;
+        text-align: center;
+        margin: auto 0;
+        display: inline-block;
+    }
+}
