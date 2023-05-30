@@ -54,7 +54,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
   }
 
   getFilters = () => {
-    let filters: any = {};
+    const filters: any = {};
     if (this.query) {
       filters['query'] = this.query;
     }
