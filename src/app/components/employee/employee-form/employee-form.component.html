@@ -1,9 +1,7 @@
 <app-modal>
   <span title>Edit Employee</span>
   <form class="row g-3 needs-validation" #employeeForm="ngForm">
-    <div class="col-12 section-title">
-        Basic Info
-    </div>
+    <div class="col-12 section-title">Basic Info</div>
 
     <div class="col-md-6">
       <div
@@ -104,9 +102,81 @@
         </div>
       </div>
     </div>
-    <div class="col-12 section-title">
-        Address Info
+    <div class="col-6">
+      <div
+        class="form-group"
+        [class.has-success]="
+          dateOfBirth.valid && (dateOfBirth.dirty || dateOfBirth.touched)
+        "
+        [class.has-danger]="
+          dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)
+        "
+      >
+        <label for="date_of_birth" class="form-label">Date of Birth</label>
+        <br />
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input
+            type="text"
+            class="form-control"
+            id="date_of_birth"
+            [(ngModel)]="formModel.date_of_birth"
+            matInput
+            [matDatepicker]="picker"
+            name="date_of_birth"
+            #dateOfBirth="ngModel"
+            required
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #picker
+            startView="year"
+            [startAt]="2000"
+          ></mat-datepicker>
+        </mat-form-field>
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)
+              ? 'block'
+              : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
     </div>
+    <div class="col-12">
+      <div
+        class="form-group"
+        [class.has-success]="email.valid && (email.dirty || email.touched)"
+        [class.has-danger]="email.invalid && (email.dirty || email.touched)"
+      >
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email Address"
+          [(ngModel)]="formModel.email"
+          name="email"
+          #email="ngModel"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          [style.display]="
+            email.invalid && (email.dirty || email.touched) ? 'block' : 'none'
+          "
+        >
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-12 section-title">Address Info</div>
     <div class="col-12">
       <div
         class="form-group"
@@ -227,13 +297,19 @@
       </div>
     </div>
 
-    <div class="col-12 section-title">
-        Skills
-    </div>
+    <div class="col-12 section-title">Skills</div>
 
     <div class="col-12">
-        <app-skill *ngFor="let skill of skills; let i = index" [skill]="skill" (removed)="onRemoved(i)"></app-skill>
-        <button class="btn btn-secondary" (click)="onAddSkill()"> + Add New Skill</button>
+      <app-skill
+        *ngFor="let skill of formModel.skills; let i = index"
+        [skill]="skill"
+        [index]="i"
+        (removed)="onRemoved(i)"
+        (updated)="onUpdated($event)"
+      ></app-skill>
+      <button class="btn btn-secondary" (click)="onAddSkill()">
+        + Add New Skill
+      </button>
     </div>
 
     <div class="col-12 text-end">

@@ -12,9 +12,17 @@ export class SkillComponent {
   formModel = new SkillModel('')
   @Input()
   showLabels = false
+  @Input()
+  index!: Number;
 
   @Output()
   removed: EventEmitter<void> = new EventEmitter<void>()
+
+  @Output()
+  updated: EventEmitter<{index: Number; data: SkillModel}> = new EventEmitter<{
+    index: Number
+    data: SkillModel
+  }>()
 
   levels = [
     {
@@ -49,5 +57,12 @@ export class SkillComponent {
 
   onRemove() {
     this.removed.emit()
+  }
+
+  onUpdated(index: Number) {
+    this.updated.emit({
+      index,
+      data: this.formModel,
+    })
   }
 }

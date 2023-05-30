@@ -16,6 +16,7 @@
             id="skill"
             placeholder="skill"
             [(ngModel)]="formModel.name"
+            (change)="onUpdated(index)"
             name="skill"
             #skillName="ngModel"
             required
@@ -50,6 +51,7 @@
             id="yearsOfExperience"
             placeholder="Yrs Exp"
             [(ngModel)]="formModel.years"
+            (change)="onUpdated(index)"
             name="years"
             #yearsOfExperience="ngModel"
             required
@@ -82,7 +84,9 @@
             type="text"
             class="form-control"
             id="level"
+            aria-placeholder="Seniority  Rating"
             [(ngModel)]="formModel.level"
+            (change)="onUpdated(index)"
             name="level"
             #level="ngModel"
             required
@@ -103,6 +107,6 @@
         </div>
       </div>
       <div class="col-md-1 fs-4">
-        <button (click)="onRemove()"><i class="bi bi-trash-fill"></i></button>
+        <button class="btn btn-dark" (click)="onRemove()"><i class="bi bi-trash-fill"></i></button>
       </div>
 </div>
