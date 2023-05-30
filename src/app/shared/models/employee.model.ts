@@ -13,6 +13,7 @@ export class EmployeeModel {
     public postal_code: string,
     public email: string,
     public contact_number?: string,
-    public id?: string
+    public id?: string,
+    public code?: string,
   ) {}
 }
