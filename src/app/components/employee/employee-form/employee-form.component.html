@@ -300,6 +300,21 @@
     <div class="col-12 section-title">Skills</div>
 
     <div class="col-12">
+      <div *ngIf="formModel?.skills && formModel?.skills!.length > 0" class="row">
+        <div class="col-md-4">
+          <label>Skill</label>
+        </div>
+
+        <div class="col-md-2">
+          <label>Yrs Exp</label>
+        </div>
+
+        <div class="col-md-5">
+          <label>Seniority</label>
+        </div>
+        <div class="col-md-1 fs-4"></div>
+      </div>
+
       <app-skill
         *ngFor="let skill of formModel.skills; let i = index"
         [skill]="skill"

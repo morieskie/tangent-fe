@@ -7,6 +7,7 @@ import {EmployeeModel} from 'src/app/shared/models/employee.model'
 import {SkillModel} from 'src/app/shared/models/skill.model'
 import {EmployeeSkillService} from 'src/app/shared/services/employee-skill.service'
 import {EmployeeService} from 'src/app/shared/services/employee.service'
+import {ModalService} from 'src/app/shared/services/modal.service'
 
 @Component({
   selector: 'app-employee-form',
@@ -21,20 +22,25 @@ export class EmployeeFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private service: EmployeeService,
-    private employeeSkillService: EmployeeSkillService
+    private employeeSkillService: EmployeeSkillService,
+    private modelService: ModalService
   ) {}
 
   async ngOnInit(): Promise<void> {
     const {id} = await firstValueFrom(this.route.params)
-    const employee = await firstValueFrom(this.service.read(id))
-    const skills = employee.skills.map((s: any) => ({
-      id: s.id,
-      level: s.level,
-      name: s.skill.name,
-      years: s.years,
-    }))
-    Object.assign(this.formModel, {...employee, skills})
-    console.log({id, employee: this.formModel})
+    if (id || this.formModel.id) {
+      const employee = await firstValueFrom(
+        this.service.read(id || this.formModel.id)
+      )
+      const skills = employee.skills.map((s: any) => ({
+        id: s.id,
+        level: s.level,
+        name: s.skill.name,
+        years: s.years,
+      }))
+      Object.assign(this.formModel, {...employee, skills})
+      console.log({id, employee: this.formModel})
+    }
   }
 
   async onSubmit() {
@@ -75,21 +81,19 @@ export class EmployeeFormComponent implements OnInit {
       }
 
       if (this.formModel.skills.length > 0) {
-        this.formModel.skills.forEach(
-          async (skill) => {
-            if(!skill.id){
-              await firstValueFrom(
-                this.employeeSkillService.create(String(id), skill)
-              )
-            }else {
-              await firstValueFrom(
-                this.employeeSkillService.update(String(id), skill)
-              )
-            }
+        this.formModel.skills.forEach(async (skill) => {
+          if (!skill.id) {
+            await firstValueFrom(
+              this.employeeSkillService.create(String(id), skill)
+            )
+          } else {
+            await firstValueFrom(
+              this.employeeSkillService.update(String(id), skill)
+            )
           }
-            
-        )
+        })
       }
+      this.modelService.deActivate()
       this.router.navigate(['employees'])
     } catch (error: any) {
       console.log({error})
@@ -99,23 +103,27 @@ export class EmployeeFormComponent implements OnInit {
 
   async onRemoved(index: Number) {
     const model = this.formModel.skills[+index]
-    console.log({model})
-    if(model)
-    await firstValueFrom(
-      this.employeeSkillService.remove(
-        String(this.formModel.id),
-        String(model.id)
+    if (model.id) {
+      await firstValueFrom(
+        this.employeeSkillService.remove(
+          String(this.formModel.id),
+          String(model.id)
+        )
       )
-    )
+    }
     // console.log({response})
     // if (response)
-      this.formModel.skills = this.formModel.skills.filter(
-        (skill, idx) => idx !== index
-      )
+    this.formModel.skills = this.formModel.skills.filter(
+      (skill, idx) => idx !== index
+    )
   }
 
   onAddSkill() {
-    this.formModel.skills.push(new SkillModel(''))
+    if (this.formModel.skills) {
+      this.formModel.skills.push(new SkillModel(''))
+    } else {
+      this.formModel.skills = [new SkillModel('')]
+    }
   }
 
   onUpdated(event: any) {

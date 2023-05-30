@@ -68,4 +68,19 @@ export class EmployeeComponent implements OnInit, OnChanges {
         }
       })
   }
+
+  onEdit(item: EmployeeModel) {
+    this.appSlot.viewContainerRef.clear();
+    
+      const component = this.appSlot.viewContainerRef.createComponent<any>(EmployeeFormComponent)
+      component.instance.display = 'block';
+      component.instance.formModel = item;
+      this.modalService.activate()
+      this.modalService.observe().subscribe((res) => {
+        if (!res) {
+          component.destroy()
+          this.appSlot.viewContainerRef.clear();
+        }
+      })
+  }
 }

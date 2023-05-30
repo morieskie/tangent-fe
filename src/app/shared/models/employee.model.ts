@@ -2,7 +2,7 @@ import { EmployeeSkillModel } from './employee-skill.model'
 import {SkillModel} from './skill.model'
 
 export class EmployeeModel {
-  public skills: SkillModel[] = []
+  public skills: SkillModel[] = [];
   constructor(
     public first_name: string,
     public last_name: string,
