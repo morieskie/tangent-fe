@@ -9,13 +9,13 @@
         skillName.invalid && (skillName.dirty || skillName.touched)
       "
     >
-      <label *ngIf="showLabels" [for]="'skill' + skill.id" class="form-label"
+      <label *ngIf="showLabels" [for]="'skill' + skill?.id" class="form-label"
         >Skill</label
       >
       <input
         type="text"
         class="form-control"
-        [id]="'skill' + skill.id"
+        [id]="'skill' + skill?.id"
         placeholder="skill"
         [(ngModel)]="formModel.name"
         (change)="onUpdated(index)"
@@ -50,14 +50,14 @@
     >
       <label
         *ngIf="showLabels"
-        [for]="'yearsOfExperience' + skill.id"
+        [for]="'yearsOfExperience' + skill?.id"
         class="form-label"
         >Yrs Exp</label
       >
       <input
         type="text"
         class="form-control"
-        [id]="'yearsOfExperience' + skill.id"
+        [id]="'yearsOfExperience' + skill?.id"
         placeholder="Yrs Exp"
         [(ngModel)]="formModel.years"
         (change)="onUpdated(index)"

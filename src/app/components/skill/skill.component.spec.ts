@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SkillComponent } from './skill.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('SkillComponent', () => {
   let component: SkillComponent;
@@ -8,7 +9,10 @@ describe('SkillComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SkillComponent]
+      declarations: [SkillComponent],
+      imports: [
+        SharedModule
+      ]
     });
     fixture = TestBed.createComponent(SkillComponent);
     component = fixture.componentInstance;
