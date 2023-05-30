@@ -11,6 +11,7 @@ describe('SkillComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SkillComponent],
       imports: [
+        
         SharedModule
       ]
     });
