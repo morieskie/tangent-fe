@@ -100,7 +100,7 @@ export class EmployeeFormComponent implements OnInit {
     }
   }
 
-  async onRemoved(index: Number) {
+  async onRemoved(index: number) {
     const model = this.formModel.skills[+index]
     if (model.id) {
       await firstValueFrom(

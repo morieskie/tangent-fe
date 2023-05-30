@@ -13,14 +13,14 @@ export class SkillComponent {
   @Input()
   showLabels = false
   @Input()
-  index!: Number;
+  index!: number;
 
   @Output()
   removed: EventEmitter<void> = new EventEmitter<void>()
 
   @Output()
-  updated: EventEmitter<{index: Number; data: SkillModel}> = new EventEmitter<{
-    index: Number
+  updated: EventEmitter<{index: number; data: SkillModel}> = new EventEmitter<{
+    index: number
     data: SkillModel
   }>()
 
@@ -55,7 +55,7 @@ export class SkillComponent {
     this.removed.emit()
   }
 
-  onUpdated(index: Number) {
+  onUpdated(index: number) {
     this.updated.emit({
       index,
       data: this.formModel,
