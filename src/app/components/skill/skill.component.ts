@@ -26,28 +26,24 @@ export class SkillComponent {
 
   levels = [
     {
-      key: 0,
-      label: 0,
-    },
-    {
       key: 1,
-      label: 1,
+      label: "Novice",
     },
     {
       key: 2,
-      label: 2,
+      label: "Beginner",
     },
     {
       key: 3,
-      label: 3,
+      label: "Competent",
     },
     {
       key: 4,
-      label: 4,
+      label: "Proficient",
     },
     {
       key: 5,
-      label: 5,
+      label: "Expert",
     },
   ]
 

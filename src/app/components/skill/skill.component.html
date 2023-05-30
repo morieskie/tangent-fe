@@ -82,7 +82,7 @@
           <label *ngIf="showLabels" for="level" class="form-label">Seniority  Rating</label>
           <select
             type="text"
-            class="form-control"
+            class="form-select"
             id="level"
             aria-placeholder="Seniority  Rating"
             [(ngModel)]="formModel.level"
@@ -91,7 +91,7 @@
             #level="ngModel"
             required
           >
-          <option selected disabled hidden>Seniority  Rating</option>
+          <option selected>Seniority  Rating</option>
           <option *ngFor="let option of levels" [value]="option.key">{{option.label}}</option>
           </select>
           <div
