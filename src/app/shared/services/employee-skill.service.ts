@@ -34,8 +34,13 @@ export class EmployeeSkillService {
     return this.http.get(`${this.baseUrl}/employees/${employeeId}/skills/${id}`);
   }
 
-  update(id: string, data: EmployeeSkillModel): Observable<any> {
-    return this.http.put(`${this.baseUrl}/employees/${id}`, data);
+  update(id: string, data: SkillModel): Observable<any> {
+    console.log('Updating', data)
+    return this.http.put(`${this.baseUrl}/employees/${id}/skills/${data.id}`, {
+      skill: data.name,
+      years: data.years,
+      level: data.level
+    });
   }
 
   remove(employeeId: string, id: string): Observable<any> {
