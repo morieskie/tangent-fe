@@ -30,7 +30,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-ZA'},
   ],
 })
 export class EmployeeModule { }

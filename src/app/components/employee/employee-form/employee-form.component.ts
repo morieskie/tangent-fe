@@ -94,7 +94,6 @@ export class EmployeeFormComponent implements OnInit {
         })
       }
       this.modelService.deActivate()
-      this.router.navigate(['employees'])
     } catch (error: any) {
       console.log({error})
       this.errors = error.errors

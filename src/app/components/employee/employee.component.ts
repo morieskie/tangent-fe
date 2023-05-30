@@ -14,6 +14,8 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 export class EmployeeComponent implements OnInit, OnChanges {
 
   @ViewChild(SlotDirective, {static: true}) appSlot!: SlotDirective
+
+  showFilters = false;
   
   items: EmployeeModel[] = [];
   total = '0';
@@ -41,10 +43,14 @@ export class EmployeeComponent implements OnInit, OnChanges {
     console.log(this.query);
   }
 
+  onShowFilter(){
+    this.showFilters = !this.showFilters;
+  }
+
   onSearch() {
     const filters: any = this.getFilters();
 
-    this.router.navigate(['/employees'], { queryParams: filters });
+    this.router.navigate(['/'], { queryParams: filters });
   }
 
   getFilters = () => {

@@ -1,112 +1,122 @@
 <div class="row">
-    <div class="col-md-4">
-        <div
-          class="form-group"
-          [class.has-success]="
-          skillName.valid && (skillName.dirty || skillName.touched)
-          "
-          [class.has-danger]="
+  <div class="col-md-4">
+    <div
+      class="form-group"
+      [class.has-success]="
+        skillName.valid && (skillName.dirty || skillName.touched)
+      "
+      [class.has-danger]="
+        skillName.invalid && (skillName.dirty || skillName.touched)
+      "
+    >
+      <label *ngIf="showLabels" [for]="'skill' + skill.id" class="form-label"
+        >Skill</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        [id]="'skill' + skill.id"
+        placeholder="skill"
+        [(ngModel)]="formModel.name"
+        (change)="onUpdated(index)"
+        name="skill"
+        #skillName="ngModel"
+        required
+      />
+      <div
+        class="invalid-feedback"
+        [style.display]="
           skillName.invalid && (skillName.dirty || skillName.touched)
-          "
-        >
-          <label *ngIf="showLabels" for="skill" class="form-label">Skill</label>
-          <input
-            type="text"
-            class="form-control"
-            id="skill"
-            placeholder="skill"
-            [(ngModel)]="formModel.name"
-            (change)="onUpdated(index)"
-            name="skill"
-            #skillName="ngModel"
-            required
-          />
-          <div
-            class="invalid-feedback"
-            [style.display]="
-            skillName.invalid && (skillName.dirty || skillName.touched)
-                ? 'block'
-                : 'none'
-            "
-          >
-            Required
-          </div>
-        </div>
+            ? 'block'
+            : 'none'
+        "
+      >
+        Required
       </div>
+    </div>
+  </div>
 
-      <div class="col-md-2">
-        <div
-          class="form-group"
-          [class.has-success]="
-          yearsOfExperience.valid && (yearsOfExperience.dirty || yearsOfExperience.touched)
-          "
-          [class.has-danger]="
-          yearsOfExperience.invalid && (yearsOfExperience.dirty || yearsOfExperience.touched)
-          "
-        >
-          <label *ngIf="showLabels" for="yearsOfExperience" class="form-label">Yrs Exp</label>
-          <input
-            type="text"
-            class="form-control"
-            id="yearsOfExperience"
-            placeholder="Yrs Exp"
-            [(ngModel)]="formModel.years"
-            (change)="onUpdated(index)"
-            name="years"
-            #yearsOfExperience="ngModel"
-            required
-          />
-          <div
-            class="invalid-feedback"
-            [style.display]="
-            yearsOfExperience.invalid && (yearsOfExperience.dirty || yearsOfExperience.touched)
-                ? 'block'
-                : 'none'
-            "
-          >
-            Required
-          </div>
-        </div>
+  <div class="col-md-2">
+    <div
+      class="form-group"
+      [class.has-success]="
+        yearsOfExperience.valid &&
+        (yearsOfExperience.dirty || yearsOfExperience.touched)
+      "
+      [class.has-danger]="
+        yearsOfExperience.invalid &&
+        (yearsOfExperience.dirty || yearsOfExperience.touched)
+      "
+    >
+      <label
+        *ngIf="showLabels"
+        [for]="'yearsOfExperience' + skill.id"
+        class="form-label"
+        >Yrs Exp</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        [id]="'yearsOfExperience' + skill.id"
+        placeholder="Yrs Exp"
+        [(ngModel)]="formModel.years"
+        (change)="onUpdated(index)"
+        name="years"
+        #yearsOfExperience="ngModel"
+        required
+      />
+      <div
+        class="invalid-feedback"
+        [style.display]="
+          yearsOfExperience.invalid &&
+          (yearsOfExperience.dirty || yearsOfExperience.touched)
+            ? 'block'
+            : 'none'
+        "
+      >
+        Required
       </div>
+    </div>
+  </div>
 
-      <div class="col-md-5">
-        <div
-          class="form-group"
-          [class.has-success]="
-          level.valid && (level.dirty || level.touched)
-          "
-          [class.has-danger]="
-          level.invalid && (level.dirty || level.touched)
-          "
-        >
-          <label *ngIf="showLabels" for="level" class="form-label">Seniority  Rating</label>
-          <select
-            type="text"
-            class="form-select"
-            id="level"
-            aria-placeholder="Seniority  Rating"
-            [(ngModel)]="formModel.level"
-            (change)="onUpdated(index)"
-            name="level"
-            #level="ngModel"
-            required
-          >
-          <option selected>Seniority  Rating</option>
-          <option *ngFor="let option of levels" [value]="option.key">{{option.label}}</option>
-          </select>
-          <div
-            class="invalid-feedback"
-            [style.display]="
-            level.invalid && (level.dirty || level.touched)
-                ? 'block'
-                : 'none'
-            "
-          >
-            Required
-          </div>
-        </div>
+  <div class="col-md-5">
+    <div
+      class="form-group"
+      [class.has-success]="level.valid && (level.dirty || level.touched)"
+      [class.has-danger]="level.invalid && (level.dirty || level.touched)"
+    >
+      <label *ngIf="showLabels" for="level" class="form-label"
+        >Seniority Rating</label
+      >
+      <select
+        type="text"
+        class="form-select"
+        id="level"
+        aria-placeholder="Seniority  Rating"
+        [(ngModel)]="formModel.level"
+        (change)="onUpdated(index)"
+        name="level"
+        #level="ngModel"
+        required
+      >
+        <option selected>Seniority Rating</option>
+        <option *ngFor="let option of levels" [value]="option.key">
+          {{ option.label }}
+        </option>
+      </select>
+      <div
+        class="invalid-feedback"
+        [style.display]="
+          level.invalid && (level.dirty || level.touched) ? 'block' : 'none'
+        "
+      >
+        Required
       </div>
-      <div class="col-md-1 fs-4">
-        <button class="btn btn-dark" (click)="onRemove()"><i class="bi bi-trash-fill"></i></button>
-      </div>
+    </div>
+  </div>
+  <div class="col-md-1 fs-4">
+    <button class="btn btn-dark" (click)="onRemove()">
+      <i class="bi bi-trash-fill"></i>
+    </button>
+  </div>
 </div>

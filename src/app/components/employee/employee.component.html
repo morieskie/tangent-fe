@@ -1,45 +1,89 @@
-
 <div class="container text-center">
+  <div class="row mt-5 mb-5 text-white">
+    <div class="col-3 align-self-center">
+      <h2 class="mb-0 pb-0">Employees</h2>
+      <span *ngIf="+total > 1; else singular"
+        >There are {{ total }} employees</span
+      >
+      <ng-template #singular
+        ><span>There is {{ total }} employee</span></ng-template
+      >
+    </div>
+    <div class="col-5 mt-2">
+      <input
+        name="query"
+        type="text"
+        class="form-control text-bg-dark"
+        [(ngModel)]="query"
+        (keyup)="onSearch()"
+        placeholder="Search"
+      />
+    </div>
+    <div class="col-auto mt-3">
+      <span
+        data-bs-toggle="collapse"
+        href="#"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+        (click)="onShowFilter()"
+      >
+        Filter by
+      </span>
+    </div>
+    <div class="col mt-2">
+      <button class="btn text-white ps-2 pe-2 rounded-pill" (click)="onAdd()">
+        <div class="row">
+          <div class="col-2"><span class="add-icn"> + </span></div>
+          <div class="col">New Employee</div>
+        </div>
+      </button>
+    </div>
+    <div class="col-12">
+      <div class="collapse" id="collapseExample" [class.show]="showFilters">
+        <div class="card card-body text-bg-dark">
+          Some placeholder content for the collapse component. This panel is
+          hidden by default but revealed when the user activates the relevant
+          trigger.
 
-    <div class="row mt-5 mb-5 text-white">
-        <div class="col-3 align-self-center">
-            <h2 class="mb-0 pb-0">Employees</h2>
-            <span *ngIf="+total > 1; else singular">There are {{total}} employees</span>
-            <ng-template #singular><span>There is {{total}} employee</span></ng-template>
-        </div>
-        <div class="col-5 mt-2">
-            <input name="query" type="text" class="form-control text-bg-dark" [(ngModel)]="query" (keyup)="onSearch()" placeholder="Search"/>
-        </div>
-        <div class="col-auto mt-3">Filter by</div>
-        <div class="col mt-2">
-            <button class="btn text-white ps-2 pe-2 rounded-pill" (click)="onAdd()">
-            <div class="row">
-                <div class="col-2"><span class="add-icn"> + </span></div>
-                <div class="col">New Employee</div>
+
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">1</label>
             </div>
-            </button>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">2</label>
+            </div>
+          </div>
+          
         </div>
-    </div>
-
-    <div class="row list-item align-middle p-4 text-white" *ngFor="let item of items; let i = index">
-      <div class="col-4 text-start" [style.height]="'32px'">
-        <div class="item-count">{{i+1}}</div>
-        <div class="ms-4 d-inline-block">{{item.first_name | titlecase}}</div>
-      </div>
-      <div class="col-3 text-start">
-        {{item.last_name | titlecase}}
-      </div>
-      <div class="col-3">
-        {{item.contact_number }}
-      </div>
-      <div class="col-2 text-end">
-        <a class="btn" (click)="onEdit(item)"><i class="bi bi-pencil"></i></a>
       </div>
     </div>
-    <div *ngIf="items.length === 0">
-        <img src="assets/images/icon.jpg" />
-    </div>
-
   </div>
 
-  <ng-container appSlot></ng-container>
+  <div
+    class="row list-item align-middle p-4 text-white"
+    *ngFor="let item of items; let i = index"
+  >
+    <div class="col-4 text-start">
+      <div class="item-count">{{ i + 1 }}</div>
+      <div class="ms-4 d-inline-block">{{ item.first_name | titlecase }}</div>
+    </div>
+    <div class="col-3 text-start">
+      {{ item.last_name | titlecase }}
+    </div>
+    <div class="col-3">
+      {{ item.contact_number }}
+    </div>
+    <div class="col-2 text-end">
+      <a class="btn" (click)="onEdit(item)"><i class="bi bi-pencil"></i></a>
+    </div>
+  </div>
+  <div *ngIf="items.length === 0">
+    <img src="assets/images/icon.jpg" />
+  </div>
+</div>
+
+<ng-container appSlot></ng-container>
