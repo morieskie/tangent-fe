@@ -94,7 +94,12 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://morieskie.github.io/tangent-fe/",
+            "name": "Derick Fyn",
+            "email": "dcfynn@icloud.com"
+          }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
