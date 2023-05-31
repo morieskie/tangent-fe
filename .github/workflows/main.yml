@@ -65,7 +65,7 @@ jobs:
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
       - name: Deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAGES }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GH_PAGES }}
         run: |
           npm run deploy --no-silent
