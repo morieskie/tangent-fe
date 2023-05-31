@@ -8,7 +8,7 @@ import {SkillModel} from 'src/app/shared/models/skill.model'
 })
 export class SkillComponent {
   @Input()
-  skill!: SkillModel
+  skill: SkillModel = new SkillModel('')
   formModel = new SkillModel('')
   @Input()
   showLabels = false

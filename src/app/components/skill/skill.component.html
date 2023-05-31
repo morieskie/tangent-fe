@@ -15,7 +15,7 @@
       <input
         type="text"
         class="form-control"
-        [id]="'skill' + skill?.id"
+        [id]="'skill' + skill.id"
         placeholder="skill"
         [(ngModel)]="formModel.name"
         (change)="onUpdated(index)"
@@ -50,14 +50,14 @@
     >
       <label
         *ngIf="showLabels"
-        [for]="'yearsOfExperience' + skill?.id"
+        [for]="'yearsOfExperience' + skill.id"
         class="form-label"
         >Yrs Exp</label
       >
       <input
         type="text"
         class="form-control"
-        [id]="'yearsOfExperience' + skill?.id"
+        [id]="'yearsOfExperience' + skill.id"
         placeholder="Yrs Exp"
         [(ngModel)]="formModel.years"
         (change)="onUpdated(index)"
@@ -85,13 +85,13 @@
       [class.has-success]="level.valid && (level.dirty || level.touched)"
       [class.has-danger]="level.invalid && (level.dirty || level.touched)"
     >
-      <label *ngIf="showLabels" for="level" class="form-label"
+      <label *ngIf="showLabels" [for]="'level' + skill.id" class="form-label"
         >Seniority Rating</label
       >
       <select
         type="text"
         class="form-select"
-        id="level"
+        [id]="'level' + skill.id"
         aria-placeholder="Seniority  Rating"
         [(ngModel)]="formModel.level"
         (change)="onUpdated(index)"
