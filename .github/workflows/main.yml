@@ -51,14 +51,14 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file: "false"
 
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
@@ -66,14 +66,14 @@ jobs:
 
       # - name: Deploy
       #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   run: |
       #     npm run deploy --no-silent
       # Runs a single command using the runners shell
       - name: Angular Deploy gh-pages Actions
         uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
         with:
-          github_access_token: ${{ secrets.GH_TOKEN  }} 
+          github_access_token: ${{ secrets.GITHUB_TOKEN  }} 
           build_configuration: production 
           base_href: /tangent-fe/  
           deploy_branch: gh-pages 
