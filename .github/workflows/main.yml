@@ -55,7 +55,7 @@ jobs:
           output-file: "false"
 
       - name: Create Release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v3
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
@@ -65,7 +65,7 @@ jobs:
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
       - name: Deploy
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
         run: |
           npm run deploy --no-silent
