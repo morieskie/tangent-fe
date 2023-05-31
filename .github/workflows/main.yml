@@ -51,14 +51,14 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          github-token: ${{ secrets.GH_PAGES }}
           output-file: "false"
 
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAGES }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
@@ -66,6 +66,6 @@ jobs:
 
       - name: Deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAGES }}
         run: |
           npm run deploy --no-silent
