@@ -28,7 +28,7 @@ interface Param {
   providedIn: 'root',
 })
 export class EmployeeService {
-  baseUrl = 'http://54.204.71.43/api';
+  baseUrl = 'http://3.88.191.199/api';
 
   constructor(private http: HttpClient) {}
 

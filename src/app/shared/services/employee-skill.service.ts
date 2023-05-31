@@ -8,7 +8,7 @@ import { SkillModel } from '../models/skill.model';
   providedIn: 'root'
 })
 export class EmployeeSkillService {
-  baseUrl = 'http://54.204.71.43/api';
+  baseUrl = 'http://3.88.191.199/api';
 
   constructor(private http: HttpClient) {}
 
