@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "deploy": "ng deploy --repo='https://github.com/morieskie/tangent-fe.git'"
+    "deploy": "ng deploy"
   },
   "private": true,
   "dependencies": {
