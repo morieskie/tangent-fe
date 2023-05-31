@@ -64,11 +64,20 @@ jobs:
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
-      - name: Deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          npm run deploy --no-silent
+      # - name: Deploy
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      #   run: |
+      #     npm run deploy --no-silent
+      # Runs a single command using the runners shell
+      - name: Angular Deploy gh-pages Actions
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v3
+        with:
+          github_access_token: ${{ secrets.GH_TOKEN  }} 
+          build_configuration: production 
+          base_href: /tangent-fe/  
+          deploy_branch: gh-pages 
+          angular_dist_build_folder: dist/fe
 
 permissions:
   contents: write # Allow write permission to GITHUB_TOKEN to commit to deploy branch.
