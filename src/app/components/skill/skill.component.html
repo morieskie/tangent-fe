@@ -9,7 +9,7 @@
         skillName.invalid && (skillName.dirty || skillName.touched)
       "
     >
-      <label *ngIf="showLabels" [for]="'skill' + skill?.id" class="form-label"
+      <label *ngIf="showLabels" [for]="'skill' + skill.id" class="form-label"
         >Skill</label
       >
       <input
