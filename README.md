@@ -1,4 +1,4 @@
-# Tshirtsop App
+# Tangent Frontend App
 
 This project was created as client for the Rest API on [Employee API](https://3.88.191.199/api/employees/) which is hosted on EC2 for preview purposes. The project solution follows strictly the
 
